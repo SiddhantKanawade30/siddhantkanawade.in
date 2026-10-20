@@ -1,7 +1,7 @@
 "use client"
 import { Link } from 'next-view-transitions'
 import { Container } from "../Container"
-import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion"
+import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/react"
 import { useState } from "react"
 import { usePathname } from "next/navigation"
 import { playClickSound } from "@/utils/sound"

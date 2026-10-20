@@ -1,6 +1,21 @@
 [
   {
     "id": 1,
+    "name": "AI Interviewer",
+    "slug": "ai-interviewer",
+    "shortDescription": "Autonomous AI technical interviewer generating personalized voice interviews from resumes and GitHub profiles.",
+    "description": [
+      "AI Interviewer creates personalized technical mock interviews dynamically tailored to a candidate's resume, GitHub profile, LinkedIn URL, and target role.",
+      "Features real-time bi-directional streaming powered by two concurrent WebSockets: an application WebSocket for orchestrating questions, answers, and audio streaming, alongside a Deepgram streaming WebSocket for real-time speech-to-text with automated endpointing and silence detection.",
+      "Synthesizes lifelike voice questions using ElevenLabs TTS, automatically toggling microphone capture after AI playback finishes to prevent echo loops, and compiles an in-depth evaluation report upon interview completion."
+    ],
+    "image": "interview-prep-agent.png",
+    "link": "https://interview-agent-01.vercel.app/",
+    "github": "https://github.com/SiddhantKanawade30/interview-prep-agent",
+    "layout": "image-left"
+  },
+  {
+    "id": 2,
     "name": "Fit Kaka",
     "slug": "fit-kaka",
     "shortDescription": "AI nutrition assistant for tracking calories, macros, and meal insights via WhatsApp.",
@@ -12,10 +27,10 @@
     "image": "fitkaka.webp",
     "link": "https://fit-kaka.vercel.app",
     "github": "https://github.com/SiddhantKanawade30/fit-kaka",
-    "layout": "image-left"
+    "layout": "image-right"
   },
   {
-    "id": 2,
+    "id": 3,
     "name": "Radix",
     "slug": "radix",
     "shortDescription": "Non-custodial multi-chain HD wallet for generating BIP39 seed phrases and deriving Solana & Ethereum keypairs.",
@@ -27,10 +42,10 @@
     "image": "radix.webp",
     "link": "https://radix-vault.vercel.app/",
     "github": "https://github.com/SiddhantKanawade30/radix",
-    "layout": "image-right"
+    "layout": "image-left"
   },
   {
-    "id": 3,
+    "id": 4,
     "name": "Superteam Ukraine",
     "slug": "superteam-ukraine",
     "shortDescription": "Landing page design for Superteam Ukraine bounty program. ",
@@ -42,10 +57,10 @@
     "image": "superteamUK.webp",
     "link": "https://www.figma.com/design/11YsuG2J0saz2RN3yFkXKV/superTeamUk?node-id=0-1&p=f",
     "github": null,
-    "layout": "image-left"
+    "layout": "image-right"
   },
   {
-    "id": 4,
+    "id": 5,
     "name": "TestimonialsLo",
     "slug": "testimonialslo",
     "shortDescription": "Customer testimonial manager with video uploads, payment flows, and secure storage.",
@@ -57,10 +72,10 @@
     "image": "testimonialslo.webp",
     "link": "https://testimonialslo.siddhantkanawade.in",
     "github": "https://github.com/SiddhantKanawade30/testimonialslo-backend",
-    "layout": "image-right"
+    "layout": "image-left"
   },
   {
-    "id": 5,
+    "id": 6,
     "name": "OnTrack",
     "slug": "ontrack",
     "shortDescription": "A lightweight, open-source browser extension designed to strip away YouTube's most addictive features.",
@@ -72,10 +87,10 @@
     "image": "onTrack.webp",
     "link": "https://ontrack-v1.vercel.app/",
     "github": "https://github.com/SiddhantKanawade30/onTrack",
-    "layout": "image-left"
+    "layout": "image-right"
   },
   {
-    "id": 6,
+    "id": 7,
     "name": "Canvas Board",
     "slug": "canvas-board",
     "shortDescription": "Real-time collaborative whiteboarding platform featuring an infinite canvas and WebSocket-based synchronization.",
@@ -87,10 +102,10 @@
     "image": "canvas.webp",
     "link": null,
     "github": "https://github.com/SiddhantKanawade30/canvas-board",
-    "layout": "image-right"
+    "layout": "image-left"
   },
   {
-    "id": 7,
+    "id": 8,
     "name": "Blogito",
     "slug": "blogito",
     "shortDescription": "A blog platform for sharing stories, built with React, Tailwind CSS, and email verification.",
@@ -102,6 +117,6 @@
     "image": "Blogito.png",
     "link": "https://blogito.vercel.app/",
     "github": "https://github.com/SiddhantKanawade30/blogito-backend",
-    "layout": "image-left"
+    "layout": "image-right"
   }
 ]

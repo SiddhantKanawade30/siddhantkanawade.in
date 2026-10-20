@@ -4,12 +4,12 @@ import Image from "next/image"
 import Link from "next/link"
 import { Container } from "./Container"
 import { Badge } from "./ui/Badge"
-import OnTrack from "@public/onTrack.webp"
 import TestimonialsLo from "@public/testimonialslo.webp"
 import FitKaka from "@public/fitkaka.webp"
 import CanvasBoard from "@public/canvas.webp"
 import Radix from "@public/radix.webp"
 import SuperteamUK from "@public/superteamUK.webp"
+import AIInterviewer from "@public/interview-prep-agent.png"
 // import GithubIcon from "@public/github-icon.svg"
 
 
@@ -17,12 +17,12 @@ export const Projects = () => {
 
     const projects = [
         {
-            title: "Fit Kaka",
-            slug: "fit-kaka",
-            src: FitKaka,
-            description: "AI nutrition assistant for tracking calories, proteins, and meal insights via WhatsApp by image and text upload.",
-            href: "https://fit-kaka.vercel.app",
-            github: "https://github.com/SiddhantKanawade30/fit-kaka"
+            title: "AI Interviewer",
+            slug: "ai-interviewer",
+            src: AIInterviewer,
+            description: "Autonomous AI interviewer generating personalized voice mock interviews from candidate resumes and GitHub profiles.",
+            href: "https://interview-agent-01.vercel.app/",
+            github: "https://github.com/SiddhantKanawade30/interview-prep-agent"
         },
         {
             title: "Radix",
@@ -49,12 +49,12 @@ export const Projects = () => {
             github: "https://github.com/SiddhantKanawade30/testimonialslo-backend"
         },
         {
-            title: "OnTrack",
-            slug: "ontrack",
-            src: OnTrack,
-            description: "A lightweight, open-source browser extension designed to strip away YouTube's most addictive features.",
-            href: "https://ontrack-v1.vercel.app/",
-            github: "https://github.com/SiddhantKanawade30/onTrack"
+            title: "Fit Kaka",
+            slug: "fit-kaka",
+            src: FitKaka,
+            description: "AI nutrition assistant for tracking calories, proteins, and meal insights via WhatsApp by image and text upload.",
+            href: "https://fit-kaka.vercel.app",
+            github: "https://github.com/SiddhantKanawade30/fit-kaka"
         },
         {
             title: "Canvas Board (developing)",

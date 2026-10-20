@@ -8,8 +8,10 @@ import Syncoo from "@public/syncoo.webp"
 import CanvasBoard from "@public/canvas.webp"
 import Radix from "@public/radix.webp"
 import SuperteamUK from "@public/superteamUK.webp"
+import InterviewPrepAgent from "@public/interview-prep-agent.png"
 
 export const projectImages: Record<string, StaticImageData> = {
+  "interview-prep-agent.png": InterviewPrepAgent,
   "testimonialslo.webp": TestimonialsLo,
   "Blogito.png": Blogito,
   "onTrack.webp": OnTrack,
