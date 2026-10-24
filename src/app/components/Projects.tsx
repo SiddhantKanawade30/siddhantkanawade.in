@@ -57,7 +57,7 @@ export const Projects = () => {
             github: "https://github.com/SiddhantKanawade30/fit-kaka"
         },
         {
-            title: "Canvas Board (developing)",
+            title: "Canvas Board",
             slug: "canvas-board",
             src: CanvasBoard,
             description: "Real-time collaborative whiteboard for sketching, brainstorming, and shared design sessions.",
