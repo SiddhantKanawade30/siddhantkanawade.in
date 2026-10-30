@@ -53,10 +53,10 @@ export default async function Home() {
       <Container className="pt-12 sm:pt-16">
         <section className="grid items-start gap-9 md:grid-cols-[minmax(0,1fr)_280px] md:gap-14">
           <div>
-            <h1 className="text-3xl font-medium tracking-tight text-slate-950 sm:text-4xl">
+            <h1 className="text-center text-3xl font-medium tracking-tight text-slate-950 sm:text-4xl md:text-left">
               Hello, I&apos;m Siddhant.
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+            <p className="mt-5 max-w-2xl text-center text-lg leading-8 text-slate-600 md:text-left">
               I&apos;m a software developer and engineering student from Mumbai, India. I enjoy building things for the web, exploring new technologies, and turning ideas into useful products.
             </p>
 
