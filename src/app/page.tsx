@@ -41,7 +41,7 @@ export default async function Home() {
       logoAlt: "",
     },
     {
-      text: "21 yo, enjoying hackathons and learning by building products.",
+      text: "21 y/o, enjoying hackathons and learning by building products.",
       href: null,
       logo: null,
       logoAlt: "",
