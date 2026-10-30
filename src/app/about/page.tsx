@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <div className="overflow-x-auto">
+    <main>
       <AboutHero />
       <Experience />
       <Qualification /> 
-    </div>
+    </main>
   );
 }

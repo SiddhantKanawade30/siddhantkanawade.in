@@ -1,111 +1,46 @@
 import { Container } from "../components/Container";
 import { Metadata } from "next";
 import { getBlogs } from "@/utils/mdx";
-import { Link } from 'next-view-transitions'
-import { Title } from "../components/ui/Title";
-import { Subtitle } from "../components/ui/Subtitle";
-import Image from "next/image";
+import Link from "next/link"
+import { BlogList } from "../components/PortfolioLists"
 
 
 export const metadata: Metadata = {
-  title: "Blog - Siddhant Kanawade",
-  description: "Thoughts, experiences, and insights on technology and development",
+  title: "Writing - Siddhant Kanawade",
+  description: "Notes on technology, development, and things I am learning.",
 };      
 
 export default async function BlogsPage() {
   const allBlogs = await getBlogs()
-  
-  // Date formatting options
-  const dateOptions: Intl.DateTimeFormatOptions = { 
-    weekday: 'long', 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  };
-
-  const sortedBlogs = allBlogs.sort((a, b) => 
+  const sortedBlogs = [...allBlogs].sort((a, b) =>
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-
   return (
-    <div className="min-h-screen flex items-start justify-start overflow-x-auto">
-      <Container className="min-h-screen p-4 pt-14 md:p-6 md:pt-20 md:pb-16">
-        {/* Header Section */}
-        <div className="mb-8 md:mb-16">
-          <Title>
-            My Blogs
-          </Title>
-          <Subtitle>
-            Sharing insights, experiences, and learnings from my journey in technology and development.
-          </Subtitle>
-        </div>
+    <main>
+      <Container className="min-h-[65vh] pt-12 md:pt-16">
+        <header className="mb-8 max-w-2xl md:mb-10">
+          <h1 className="text-3xl font-medium tracking-tight text-slate-950 sm:text-4xl">Writing</h1>
+          <p className="mt-4 text-base leading-7 text-slate-600">
+            Notes on the things I&apos;m learning, building, and thinking about in technology.
+          </p>
+        </header>
 
-        {/* Blog List */}
-        {sortedBlogs.length === 0 ? (
-          <div className="text-center py-8 md:py-16">
-            <div className="text-4xl md:text-6xl mb-4">📝</div>
-            <h3 className="text-xl md:text-2xl font-semibold text-primary mb-2">No posts yet</h3>
-            <p className="text-secondary text-sm md:text-base">I&apos;m working on some great content. Check back soon!</p>
-          </div>
+        {sortedBlogs.length > 0 ? (
+          <BlogList blogs={sortedBlogs} />
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {allBlogs.map((blog) => (
-              <Link 
-                href={`/blogs/${blog.slug}`} 
-                key={blog.slug} 
-                className="block group"
-              >
-                <article className="bg-white rounded-lg border shadow-siddhant border-gray-100 p-4 transition-all duration-200">
-                  {/* Blog Image */}
-                  {blog.image && (
-                    <div className="mb-4">
-                      <Image
-                        src={blog.image} 
-                        alt={blog.title}
-                        width={800}
-                        height={400}
-                        className="w-full h-48 object-cover rounded-lg"
-                      />
-                    </div>
-                  )}
-                  
-                  {/* Title */}
-                  <h2 className="text-lg md:text-xl font-bold text-primary group-hover:text-tertiary transition-colors line-clamp-2 leading-tight mb-3">
-                    {blog.title}
-                  </h2>
-                  
-                  {/* Description */}
-                  {blog.description && (
-                    <p className="text-secondary text-sm leading-relaxed line-clamp-2 mb-4">
-                      {blog.description}
-                    </p>
-                  )}
-                  
-                  {/* Date */}
-                  {blog.date && (
-                    <div className="flex justify-start md:justify-start">
-                      <span className="text-xs md:text-sm text-secondary font-medium">
-                        {new Date(blog.date).toLocaleDateString("en-US", dateOptions)}
-                      </span>
-                    </div>
-                  )}
-                </article>
-              </Link>
-            ))}
-          </div>
+          <p className="border-y border-neutral-200/80 py-6 text-sm text-slate-500">
+            No posts yet. I&apos;m working on something to share.
+          </p>
         )}
 
-        {/* Footer Section */}
-        <div className="text-center mt-8 md:mt-16 pt-4 md:pt-8">
-          <p className="text-secondary text-sm md:text-base">
-            Have a question or want to discuss any of these topics? 
-            <Link href="/contact" className="text-primary hover:text-tertiary transition-colors ml-1">
-              Let&apos;s connect!
-            </Link>
-          </p>
-        </div>
+        <p className="mt-10 text-sm text-slate-600">
+          Have a question or want to talk about a post?{" "}
+          <Link href="mailto:kanawadesiddhant30@gmail.com" className="text-slate-900 underline decoration-neutral-300 underline-offset-4 transition-colors hover:decoration-slate-900">
+            Get in touch
+          </Link>
+        </p>
       </Container>
-    </div>
+    </main>
   );
 }

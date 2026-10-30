@@ -1,17 +1,22 @@
 import { Badge } from "./ui/Badge"
 import { Input } from "./ui/Input"
+import { Container } from "./Container"
 
 export const HeroContact = () => {
     return (
-        <div className="py-15 overflow-x-auto">
-    <div className="py-2 px-4">
-        <Badge>Let&apos;s connect</Badge>    
-        
-        </div>
-        <div className="px-6 text-secondary text-sm md:text-base max-w-lg leading-relaxed">I am Currently looking for new opportunities. If you have any query or want to work together, just drop your mail !</div>
-        <div className="px-4 mt-4">
-        <Input label="Email" placeholder="Email" type="email"  />
-        </div>
-        </div>
+        <Container className="py-12">
+            <section aria-labelledby="connect-heading" className="max-w-2xl">
+                <div className="mb-3">
+                    <Badge>Let&apos;s connect</Badge>
+                </div>
+                <h2 id="connect-heading" className="sr-only">Let&apos;s connect</h2>
+                <p className="max-w-lg text-sm leading-6 text-slate-600 md:text-base">
+                    I am currently looking for new opportunities. If you have any questions or want to work together, just drop me an email.
+                </p>
+                <div className="-mx-4 mt-3">
+                    <Input label="Email" placeholder="Email" type="email" />
+                </div>
+            </section>
+        </Container>
     )
 }

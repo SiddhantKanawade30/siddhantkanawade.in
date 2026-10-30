@@ -1,21 +1,13 @@
 import { Container } from "./Container"
-import { Title } from "./ui/Title"
-import { Subtitle } from "./ui/Subtitle"
-
-
 export const ProjectsHero = () => {
     return (
-        <Container className="p-4 pt-14 md:pt-20 md:pb-10 px-4 md:px-7 overflow-x-auto">
-        <div className="max-w-6xl mx-auto min-w-0">
-          <Title>Projects</Title>
-          <Subtitle>
-          
-          Every project I build is a step forward in my coding journey, helping me explore new tools, frameworks, and creative ways to solve real-world problems.
-          
-          </Subtitle>
-          
-          
-        </div>
-      </Container>  
+        <Container className="pb-7 pt-12 md:pb-10 md:pt-16">
+          <div className="max-w-2xl">
+            <h1 className="text-3xl font-medium tracking-tight text-slate-950 sm:text-4xl">Projects</h1>
+            <p className="mt-4 text-base leading-7 text-slate-600">
+              A selection of things I&apos;ve built while exploring useful ideas, new tools, and better ways to solve problems.
+            </p>
+          </div>
+        </Container>
     )
 }

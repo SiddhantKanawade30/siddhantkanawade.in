@@ -80,11 +80,7 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en">
         <body
-          className={`${inter.className} antialiased bg-neutral-100 overflow-x-auto`}
-          style={{
-            backgroundImage: `linear-gradient(45deg, #e5e5e5 15%, transparent 15%, transparent 40%, #e5e5e5 40%, #e5e5e5 65%, transparent 65%, transparent)`,
-            backgroundSize: `4px 4px`
-          }}
+          className={`${inter.className} min-h-screen overflow-x-hidden bg-[#fcfcfb] text-slate-900 antialiased`}
         >
           <Navbar />
           {children}

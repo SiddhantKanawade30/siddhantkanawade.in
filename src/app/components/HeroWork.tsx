@@ -1,47 +1,59 @@
-"use client"
 import { Container } from "./Container"
-import { Badge } from "./ui/Badge"
-import { HeroWorkCard } from "./ui/HeroWorkCard"
-
-
-
+import Image from "next/image"
+import Link from "next/link"
 
 export const HeroWork = () => {
-
-
     const work = [
         {
             title: "Codence Studio",
-            Role: "Frontend Developer",
+            role: "Frontend Developer",
             date: "July 2025 - November 2025",
             description: "Worked on multiple projects as a frontend developer and have built polished products.",
-            image: "/codence_studio.webp"
+            href: "https://codencestudio.com",
+            logo: "/codence_studio.webp",
         },
         {
             title: "Wecodecrunchers",
-            Role: "Technical Team Member",
+            role: "Technical Team Member",
             date: "February 2025 - Present",
             description: "Worked as a technical team member and gained hands-on experience",
-            image: "/wecodecrunchers.webp"
+            href: "https://www.linkedin.com/company/wecodecrunchers/",
+            logo: "/wecodecrunchers.webp",
         }
     ]
 
-
     return (
-        <Container>
-        <div className="pt-5 -mx-4 px-4 border-2 border-neutral-100 pb-15 overflow-x-auto">
-        <div className="py-5">
-            <Badge>Work Experience</Badge>
-            </div>
-           
-            <div className="min-w-0">
-               {work.map((work, index) => (
-                <HeroWorkCard key={index} title={work.title} Role={work.Role} date={work.date} description={work.description} image={work.image} />
-               ))} 
-            </div>
-        
-           
-        </div>
+        <Container className="pb-8">
+            <section aria-labelledby="home-experience-heading">
+                <h2 id="home-experience-heading" className="text-xs font-medium tracking-[0.16em] text-slate-500">EXPERIENCE</h2>
+                <div className="mt-3 divide-y divide-neutral-200/80 border-y border-neutral-200/80">
+                    {work.map((item) => (
+                        <article key={item.title} className="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:justify-between">
+                            <div className="flex min-w-0 items-start gap-3">
+                                <Link
+                                    href={item.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={`${item.title} (opens in a new tab)`}
+                                    className="relative mt-0.5 h-9 w-9 shrink-0 overflow-hidden rounded-md border border-neutral-200/80 bg-white"
+                                >
+                                    <Image src={item.logo} alt="" fill sizes="36px" className="object-contain p-1" />
+                                </Link>
+                                <div>
+                                    <h3 className="text-sm font-medium text-slate-900">
+                                        {item.role} ·{" "}
+                                        <Link href={item.href} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-slate-500">
+                                            {item.title}
+                                        </Link>
+                                    </h3>
+                                <p className="mt-1 text-sm text-slate-600">{item.description}</p>
+                                </div>
+                            </div>
+                            <p className="shrink-0 pl-12 text-xs text-slate-500 sm:pl-0">{item.date}</p>
+                        </article>
+                    ))}
+                </div>
+            </section>
         </Container>
     )
 }

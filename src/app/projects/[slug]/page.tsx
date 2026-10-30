@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Container } from "@/app/components/Container"
-import { Link as LinkIcon } from "lucide-react"
+import { ArrowUpRight, Link as LinkIcon } from "lucide-react"
 import GithubIcon from "@public/github-icon.svg"
 import { projectImages } from "@/app/components/projects/projectImages"
 import projectsData from "@/data/projects.json"
@@ -20,92 +20,86 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   }
 
   return (
-    <Container>
-      <div className="pt-10 pb-16">
-        <Link
-          href="/projects"
-          className="text-sm font-medium text-primary hover:text-primary/90"
-        >
+    <main>
+      <Container className="pb-14 pt-10 md:pb-16 md:pt-14">
+        <Link href="/projects" className="text-sm text-slate-500 transition-colors hover:text-slate-950">
           ← Back to projects
         </Link>
 
-        <div className="mt-6 overflow-hidden bg-white rounded-xl">
+        <header className="mt-8 max-w-3xl">
+          <h1 className="text-3xl font-medium tracking-tight text-slate-950 sm:text-4xl">
+            {project.name}
+          </h1>
+          <p className="mt-4 text-base leading-7 text-slate-600">
+            {project.shortDescription}
+          </p>
+        </header>
+
+        <div className="relative mt-8 aspect-[16/9] max-h-[30rem] overflow-hidden rounded-md border border-neutral-200/80 bg-white">
           {project.link ? (
             <Link
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="block relative h-42 md:w-[52rem] md:h-[26rem] w-full overflow-hidden mx-auto"
+              aria-label={`Visit ${project.name} (opens in a new tab)`}
+              className="absolute inset-0"
             >
               <Image
                 src={projectImages[project.image]}
-                alt={project.name}
-                className="object-cover transition duration-300 ease-in-out hover:brightness-95 rounded-xl shadow-siddhant"
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                className="object-cover transition-opacity hover:opacity-95"
+                priority
               />
             </Link>
           ) : (
-            <div className="relative h-72 md:w-[52rem] md:h-[23rem] w-full overflow-hidden mx-auto">
-              <Image
-                src={projectImages[project.image]}
-                alt={project.name}
-                fill
-                className="object-cover rounded-2xl shadow-siddhant"
-              />
-            </div>
+            <Image
+              src={projectImages[project.image]}
+              alt={project.name}
+              fill
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="object-cover"
+              priority
+            />
           )}
-
-          <div className="p-6 md:p-6">
-            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div>
-                <h1 className="text-3xl font-semibold tracking-tight text-slate-950">
-                  {project.name}
-                </h1>
-                <p className="mt-3 text-sm md:text-base text-secondary max-w-2xl">
-                  {project.shortDescription}
-                </p>
-              </div>
-
-              <div className="flex items-center gap-3">
-                {project.link && (
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-slate-950 transition hover:border-slate-300 hover:bg-neutral-50"
-                  >
-                    <LinkIcon className="h-4 w-4" />
-                    
-                  </Link>
-                )}
-
-                {project.github && (
-                  <Link
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-slate-950 transition hover:border-slate-300 hover:bg-neutral-50"
-                  >
-                    <Image
-                      src={GithubIcon}
-                      alt="GitHub"
-                      width={16}
-                      height={16}
-                      className="w-4 h-4"
-                    />
-                    
-                  </Link>
-                )}
-              </div>
-            </div>
-
-            <div className="mt-8 space-y-6 text-sm md:text-base text-secondary leading-relaxed">
-              {project.description.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
-          </div>
         </div>
-      </div>
-    </Container>
+
+        <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,1fr)_220px] md:gap-12">
+          <div className="space-y-5 text-base leading-7 text-slate-600">
+            {project.description.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+
+          <nav aria-label={`${project.name} links`} className="flex flex-col gap-3 md:items-start">
+            {project.link && (
+              <Link
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-slate-700 transition-colors hover:text-slate-950"
+              >
+                <LinkIcon aria-hidden="true" className="h-4 w-4" />
+                Visit project
+                <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" />
+              </Link>
+            )}
+            {project.github && (
+              <Link
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-slate-700 transition-colors hover:text-slate-950"
+              >
+                <Image src={GithubIcon} alt="" width={16} height={16} />
+                View source
+                <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" />
+              </Link>
+            )}
+          </nav>
+        </div>
+      </Container>
+    </main>
   )
 }

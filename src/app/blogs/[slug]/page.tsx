@@ -1,8 +1,9 @@
 import { Container } from "@/app/components/Container";
 import { Metadata } from "next";
-import { redirect } from 'next/navigation'
+import { redirect } from "next/navigation"
 import { getBlogContent, getAllBlogSlugs } from "@/utils/mdx";
 import Image from "next/image";
+import Link from "next/link"
 
 interface BlogPageProps {
   params: Promise<{
@@ -75,38 +76,59 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 }
 
 export default async function SingleBlogPage({ params }: { params: Promise<{ slug: string }> }) {
-  
-    // Try to read the blog file based on the slug
     const { slug } = await params;
     const blog = await getBlogContent(slug)
 
-    if(!blog) {
+    if (!blog) {
       redirect("/blogs")
     }
 
-    const {content} = blog;
+    const { content, frontmatter } = blog;
 
     return (
-      <div className="overflow-x-auto">
-        <Container className="min-h-screen p-4 md:p-6 md:pt-20 md:pb-10">
-          {/* Blog Image */}
-          {blog.frontmatter.image && (
-            <div className="mb-6">
+      <main>
+        <Container className="min-h-[65vh] pb-12 pt-10 md:pt-14">
+          <Link href="/blogs" className="text-sm text-slate-500 transition-colors hover:text-slate-950">
+            ← Back to writing
+          </Link>
+          <header className="mx-auto mt-8 max-w-3xl">
+            {frontmatter.date && (
+              <time
+                dateTime={frontmatter.date}
+                className="text-sm text-slate-500"
+              >
+                {new Date(`${frontmatter.date}T00:00:00`).toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </time>
+            )}
+            <h1 className="mt-3 text-3xl font-medium leading-tight tracking-tight text-slate-950 sm:text-4xl">
+              {frontmatter.title}
+            </h1>
+            {frontmatter.description && (
+              <p className="mt-4 text-lg leading-7 text-slate-600">{frontmatter.description}</p>
+            )}
+          </header>
+
+          {frontmatter.image && (
+            <div className="mx-auto mb-10 mt-8 max-w-4xl overflow-hidden rounded-md">
               <Image
-                src={blog.frontmatter.image} 
-                alt={blog.frontmatter.title}
+                src={frontmatter.image}
+                alt={frontmatter.title}
                 width={1000}
                 height={500}
-                className="w-full h-64 md:h-103 object-cover rounded-lg"
+                className="h-auto max-h-[28rem] w-full object-cover"
               />
             </div>
           )}
-          
-          <article className="blog-content prose prose-sm md:prose-base max-w-none min-w-0 mx-auto lg:min-w-3xl">
-             {content}
+
+          <article className="blog-content mx-auto max-w-[70ch] min-w-0">
+            {content}
           </article>
         </Container>
-      </div>
+      </main>
     );
   
 }

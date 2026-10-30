@@ -4,15 +4,15 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Projects - Siddhant Kanawade",
-  description: "Thoughts, experiences, and insights on technology and development",
+  description: "A selection of projects built by Siddhant Kanawade.",
 }; 
 
 
 export default function ProjectsPage() {
     return (
-      <div className="overflow-x-auto">
+      <main>
         <ProjectsHero />
         <Projects />
-      </div>
+      </main>
     );
   }
