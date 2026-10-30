@@ -31,7 +31,7 @@ const links = [
     return (
         <Container className="mt-16 pb-8">
             <div className="flex flex-col items-center justify-between gap-4 border-t border-neutral-200 pt-5 text-sm text-slate-500 sm:flex-row">
-                <p>Built with care by Siddhant A Kanawade</p>
+                <p>Built it simple, just the way I like it.</p>
                 <div className="flex gap-4">
                     {links.map((link) => (
                         <Link
